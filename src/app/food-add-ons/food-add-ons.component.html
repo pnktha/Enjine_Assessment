@@ -1,0 +1,91 @@
+<div class="container p-3 my-3 border">
+    <div class="row">
+        <div class="col-sm">
+            <form [formGroup]="addonForm" (ngSubmit)="addFoodItem()">
+                <div class="form-group form-check">
+                    <label class="form-check-label" *ngIf="item.name=='Burger'">
+                        <input class="form-check-input" formControlName="Ketchup" type="checkbox" name="ketchup" id="Ketchup" value="Ketchup"> Ketchup
+                    </label>
+                </div>
+                <div class="form-group form-check" *ngIf="item.name=='Burger'">
+                    <label class="form-check-label">
+                        <input class="form-check-input" formControlName="mustard" type="checkbox" value="Mustard" id="Ketchup" name="mustard">Mustard
+                    </label>
+                </div>
+                <div class="form-group form-check" *ngIf="item.name=='Burger'">
+                    <label class="form-check-label">
+                        <input class="form-check-input" formControlName="lettuce" type="checkbox" name="lettuce" id="Ketchup" value="Lettuce"> Lettuce
+                    </label>
+                </div>
+                <div class="form-group form-check" *ngIf="item.name=='Burger'">
+                    <label class="form-check-label">
+                        <input class="form-check-input" formControlName="tomato" type="checkbox"id="tomato"  name="tomato" value="Tomato"> Tomato
+                    </label>
+                </div>
+                <div class="form-inline">
+                    <div class="form-check mb-2 mr-sm-2" *ngIf="item.name=='Burger'">
+                        <label class="form-check-label">
+                            <input type="radio" value="Fries" formControlName="sides" class="form-check-input"
+                                id="radFry" name="sides"> Fries
+                        </label>
+                        <label for="pwd2" class="mb-2 mr-sm-2"></label>
+                        <select id="ddlFries" formControlName="friesSize" name="ddlFries" class="form-control mb-2 mr-sm-2" *ngIf="addonForm.get('sides').value==='Fries'">
+                            <option value="Small">
+                                Small
+                            </option>
+                            <option value="Large">
+                                Large
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-check mb-2 mr-sm-2">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="sides" id="radSalad"
+                                value="Salads" name="sides"> Salads
+                        </label>
+                        <label for="ddlFries" class="mb-2 mr-sm-2"></label>
+                        <select id="ddlFries" formControlName="saladType" name="ddlFries" class="form-control mb-2 mr-sm-2" *ngIf="addonForm.get('sides').value==='Salads'">
+                            <option value="caesar">
+                                Caesar
+                            </option>
+                            <option value="balsamic">
+                                Balsamic
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-check mb-2 mr-sm-2" *ngIf="item.name=='Steaks'">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="sides" value="BakedPotato"
+                                id="radSalad" name="sides">Baked Potato
+                        </label>
+                        <label for="txtNumber" class="mb-2 mr-sm-2"></label>
+                        <input type="text" id="txtNumber" formControlName="bakedPotatos" name="txtNumber"
+                            class="form-control mb-2 mr-sm-2" placeholder="Number of Potatos">
+                    </div>
+                </div>
+                <div class="form-row" *ngIf="item.name=='Steaks'">
+                    <div class="col-7">
+                        <select id="ddlDoneness" formControlName="steakType" name="ddlDoneness" class="form-control mb-2 mr-sm-2">
+                            <option value="rare">
+                                Rare
+                            </option>
+                            <option value="medium">
+                                Medium
+                            </option>
+                            <option value="welldone">
+                                Well done
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-7">
+                        <label for="txtSpecial">Special Requests:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" formControlName="specialOrders"  id="txtSpecial" name="txtSpecial">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-warning">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

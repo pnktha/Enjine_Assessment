@@ -1,0 +1,19 @@
+<div class="container p-3 my-3 border">
+    <div class="row">
+        <div class="col-sm">
+            <img class="menu-img" itemprop="image" loading="lazy" [srcset]="item.imageUrl" alt="Chicken Burger">
+        </div>
+        <div class="col-lg">
+            <h1>{{item.name}}</h1>
+        </div>
+        <div class="col-sm">
+            <div class="float-right">
+                {{item.currency}}{{item.price}} <input type="button" class="btn btn-warning " value="Add"
+                    (click)="addFoodItem(item)" *ngIf="isClosed">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="foodItem.name=='Burger'|| foodItem.name=='Steaks'">
+        <app-food-add-ons *ngIf="!isClosed" [item]="foodItem" (addItem)="addSubItems($event)"></app-food-add-ons>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <ul class="navbar-nav">
+        <li>Enjine</li>
+    </ul>
+</nav>
+<div class="container-fluid" style="margin-top:80px">
+    <div *ngIf="!isCheckout">
+        <div *ngFor="let food of foodList">
+            <app-menu-item [item]="food" [cartItems]="cartItems" (addItem)="addToCart($event)"></app-menu-item>
+        </div>        
+        <div class="container">
+            <input type="button" value="Check out" class="btn btn-warning float-right" (click)="SubmitData()">
+        </div>
+    </div>
+    <div *ngIf="isCheckout">
+        <app-food-orders [cartItems]="cartItems" (cancelItem)="cancel($item)"></app-food-orders>
+    </div>
+</div>
